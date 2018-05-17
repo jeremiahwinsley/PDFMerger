@@ -45,8 +45,8 @@ class PDFMerger
 	 */
 	public function __construct()
 	{
-		require_once('tcpdf/tcpdf.php');
-		require_once('tcpdf/tcpdi.php');
+		require_once(__DIR__ . '/tcpdf/tcpdf.php');
+		require_once(__DIR__ . '/tcpdf/tcpdi.php');
 	}
 
 	/**
