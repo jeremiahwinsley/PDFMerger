@@ -68,7 +68,7 @@ class PDFMerger
 		}
 		else
 		{
-			throw new exception("Could not locate PDF on '$filepath'");
+			throw new \exception("Could not locate PDF on '$filepath'");
 		}
 
 		return $this;
@@ -82,7 +82,7 @@ class PDFMerger
 	 */
 	public function merge($outputmode = 'browser', $outputpath = 'newfile.pdf')
 	{
-		if(!isset($this->_files) || !is_array($this->_files)): throw new exception("No PDFs to merge."); endif;
+		if(!isset($this->_files) || !is_array($this->_files)): throw new \exception("No PDFs to merge."); endif;
 
     $fpdi = new \TCPDI;
     $fpdi->SetPrintHeader(false);
@@ -113,7 +113,7 @@ class PDFMerger
 			{
 				foreach($filepages as $page)
 				{
-					if(!$template = $fpdi->importPage($page)): throw new exception("Could not load page '$page' in PDF '$filename'. Check that the page exists."); endif;
+					if(!$template = $fpdi->importPage($page)): throw new \exception("Could not load page '$page' in PDF '$filename'. Check that the page exists."); endif;
 					$size = $fpdi->getTemplateSize($template);
 					$orientation = ($size['h'] > $size['w']) ? 'P' : 'L';
 
@@ -143,7 +143,7 @@ class PDFMerger
 			}
 			else
 			{
-				throw new exception("Error outputting PDF to '$outputmode'.");
+				throw new \exception("Error outputting PDF to '$outputmode'.");
 				return false;
 			}
 		}
@@ -198,7 +198,7 @@ class PDFMerger
 				$x = $ind[0]; //start page
 				$y = $ind[1]; //end page
 
-				if($x > $y): throw new exception("Starting page, '$x' is greater than ending page '$y'."); return false; endif;
+				if($x > $y): throw new \exception("Starting page, '$x' is greater than ending page '$y'."); return false; endif;
 
 				//add middle pages
 				while($x <= $y): $newpages[] = (int) $x; $x++; endwhile;
